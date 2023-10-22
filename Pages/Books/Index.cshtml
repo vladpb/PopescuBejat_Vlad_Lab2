@@ -20,6 +20,9 @@
                 @Html.DisplayNameFor(model => model.Book[0].Author.AuthorFirstName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Book[0].Author.AuthorLastName)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Book[0].Price)
             </th>
             <th>
@@ -38,7 +41,10 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Author.AuthorFirstName)
+                @Html.DisplayFor(modelItem => item.Author.AuthorFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.AuthorLastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)

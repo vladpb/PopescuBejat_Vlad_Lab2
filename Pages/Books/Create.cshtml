@@ -24,6 +24,11 @@
                 <span asp-validation-for="Book.Author.AuthorFirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Book.Author.AuthorLastName" class="control-label"></label>
+                <input asp-for="Book.Author.AuthorLastName" class="form-control" />
+                <span asp-validation-for="Book.Author.AuthorLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Book.Price" class="control-label"></label>
                 <input asp-for="Book.Price" class="form-control" />
                 <span asp-validation-for="Book.Price" class="text-danger"></span>
