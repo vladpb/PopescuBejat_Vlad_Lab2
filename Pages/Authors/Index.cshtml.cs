@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PopescuBejat_Vlad_Lab2.Data;
 using PopescuBejat_Vlad_Lab2.Models;
 
-namespace PopescuBejat_Vlad_Lab2.Pages.Books
+namespace PopescuBejat_Vlad_Lab2.Pages.Authors
 {
     public class IndexModel : PageModel
     {
@@ -19,16 +19,13 @@ namespace PopescuBejat_Vlad_Lab2.Pages.Books
             _context = context;
         }
 
-        public IList<Book> Book { get;set; } = default!;
+        public IList<Author> Authors { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Book != null)
+            if (_context.Author != null)
             {
-                Book = await _context.Book
-                    .Include(b=>b.Publisher)
-                    .Include(b=>b.Author)
-                    .ToListAsync();
+                Authors = await _context.Author.ToListAsync();
             }
         }
     }
