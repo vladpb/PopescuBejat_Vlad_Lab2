@@ -1,8 +1,7 @@
-﻿namespace PopescuBejat_Vlad_Lab2.Models
-{
-    using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿   using Microsoft.AspNetCore.Mvc.RazorPages;
     using PopescuBejat_Vlad_Lab2.Data;
-    namespace PopescuBejat_Vlad.Models
+
+    namespace PopescuBejat_Vlad_Lab2.Models
     {
         public class BookCategoriesPageModel : PageModel
         {
@@ -64,4 +63,3 @@
             }
         }
     }
-}

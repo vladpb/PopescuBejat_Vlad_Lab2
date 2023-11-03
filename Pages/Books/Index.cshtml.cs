@@ -19,7 +19,7 @@ namespace PopescuBejat_Vlad_Lab2.Pages.Books
             _context = context;
         }
 
-        public IList<Book> Book { get;set; } = default!;
+        public IList<Book> Book { get; set; } = default!;
         public BookData BookD { get; set; }
         public int BookID { get; set; }
         public int CategoryID { get; set; }
@@ -40,17 +40,6 @@ namespace PopescuBejat_Vlad_Lab2.Pages.Books
                 Book book = BookD.Books
                 .Where(i => i.ID == id.Value).Single();
                 BookD.Categories = book.BookCategories.Select(s => s.Category);
-            }
-        }
-
-        public async Task OnGetAsync()
-        {
-            if (_context.Book != null)
-            {
-                Book = await _context.Book
-                    .Include(b=>b.Publisher)
-                    .Include(b=>b.Author)
-                    .ToListAsync();
             }
         }
     }

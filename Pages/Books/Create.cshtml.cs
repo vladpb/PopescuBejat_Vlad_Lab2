@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PopescuBejat_Vlad_Lab2.Data;
 using PopescuBejat_Vlad_Lab2.Models;
-using PopescuBejat_Vlad_Lab2.Models.PopescuBejat_Vlad.Models;
 
 namespace PopescuBejat_Vlad_Lab2.Pages.Books
 {

@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PopescuBejat_Vlad_Lab2.Data;
 using PopescuBejat_Vlad_Lab2.Models;
-using PopescuBejat_Vlad_Lab2.Models.PopescuBejat_Vlad.Models;
 
 namespace PopescuBejat_Vlad_Lab2.Pages.Books
 {
@@ -33,7 +32,8 @@ namespace PopescuBejat_Vlad_Lab2.Pages.Books
 
             Book = await _context.Book
             .Include(b => b.Publisher)
-            .Include(b => b.BookCategories).ThenInclude(b => b.Category)
+            .Include(b => b.BookCategories)
+            .ThenInclude(b => b.Category)
             .AsNoTracking()
             .FirstOrDefaultAsync(m => m.ID == id);
 
