@@ -32,7 +32,7 @@ namespace PopescuBejat_Vlad_Lab2.Pages.Books
 
             TitleSort = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             AuthorSort = sortOrder == "author" ? "author_desc" : "author";
-
+            
             CurrentFilter = searchString;
 
             BookD.Books = await _context.Book

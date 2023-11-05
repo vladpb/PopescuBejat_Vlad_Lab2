@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using PopescuBejat_Vlad_Lab2.Data;
 using PopescuBejat_Vlad_Lab2.Models;
@@ -28,5 +29,40 @@ namespace PopescuBejat_Vlad_Lab2.Pages.Categories
                 Category = await _context.Category.ToListAsync();
             }
         }
+        public BookData BookD { get; set; }
+        public string CurrentFilter { get; set; }
+
+        public string PublisherNameSort { get; set; }
+        public string PublishDateSort { get; set; }
+
+        public async Task OnGetAsync(int? PublisherName, string sortOrder, string searchString)
+        {
+            BookD = new BookData();
+
+            PublisherNameSort = sortOrder == "publisher_name" ? "publisher_name_desc" : "publisher_name";
+            PublishDateSort = sortOrder == "publish_date" ? "publish_date_desc" : "publish_date";
+
+            CurrentFilter = searchString;
+
+            BookD.Books = await _context.Book
+            .Include(b => b.Publisher)
+            .Include(b => b.BookCategories)
+            .ThenInclude(b => b.Category)
+            .AsNoTracking()
+            .OrderBy(b => b.Title)
+            .ToListAsync();
+
+
+            switch(sortOrder)
+            {
+                case "publisher_name_desc":
+                    BookD.Books = BookD.Books.OrderByDescending(s => s.Publisher.PublisherName);
+                    break;
+                case "publisher_name":
+                    BookD.Books = BookD.Books.OrderBy(s => s.Publisher.PublisherName);
+                    break;
+            }
+        }
+
     }
 }
