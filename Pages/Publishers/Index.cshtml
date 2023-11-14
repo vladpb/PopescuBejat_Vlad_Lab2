@@ -61,10 +61,10 @@
                     @{
                         foreach (var b in item.Books)
                         {
-
-                            @b.Title @: @b.Author.FullName
-
-                            <br />
+                            <tr>
+                                <td>@b.Title</td>
+                                <td>@(b.Author != null ? b.Author.FullName : "N/A")</td>
+                            </tr>
                         }
                     }
                 </td>

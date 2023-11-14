@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using PopescuBejat_Vlad_Lab2.Data;
 using PopescuBejat_Vlad_Lab2.Models;
+using PopescuBejat_Vlad_Lab2.Models.ViewModels;
 
 namespace PopescuBejat_Vlad_Lab2.Pages.Categories
 {
+    [Authorize(Roles = "Admin")]
     public class IndexModel : PageModel
     {
         private readonly PopescuBejat_Vlad_Lab2.Data.PopescuBejat_Vlad_Lab2Context _context;
@@ -21,6 +24,8 @@ namespace PopescuBejat_Vlad_Lab2.Pages.Categories
         }
 
         public IList<Category> Category { get;set; } = default!;
+        public CategoryIndexData CategoryIndexData { get; set; }
+
 
         public async Task OnGetAsync()
         {
@@ -29,6 +34,8 @@ namespace PopescuBejat_Vlad_Lab2.Pages.Categories
                 Category = await _context.Category.ToListAsync();
             }
         }
+        public int CategoryID { get; set; }
+
         public BookData BookD { get; set; }
         public string CurrentFilter { get; set; }
 
